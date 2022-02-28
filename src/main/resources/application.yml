@@ -1,0 +1,72 @@
+spring:
+  profiles:
+    active: @profileActive@
+
+server:
+  port: 8080
+
+mybatis-plus:
+  type-enums-package: com.eu.frame.*.enums.**
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mybatis/*Mapper.xml
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    shutdown:
+      enabled: true
+
+#jwt
+jwt:
+  key: Authorization
+  sign: test
+  expiration: 604800000
+
+# 短信发送时间间隔
+message:
+  send:
+    interval: 60
+
+# 短信验证码有效期
+captcha:
+  expiration: 600
+
+#连接超时时间
+sun:
+  net:
+    client:
+      defaultConnectTimeout: 60000
+      defaultReadTimeout: 60000
+
+#============================ 阿里云短信发送参数 =======================
+aliyuncs:
+  profile:
+    domain: dysmsapi.aliyuncs.com
+    version: 2017-05-25
+    action: SendSms
+    sign-name:
+    region-id: cn-hangzhou
+    access-key-id:
+    secret:
+    endpoint-name: cn-hangzhou
+    product: Dysmsapi
+
+security:
+  # 是否开启接口授权
+  authority: false
+  # 是否开启接口签名校验
+  sign: false
+  # 时间戳有效期2分钟 (ms)
+  tstimeout: 120000
+  # 签名有效期2分钟 (ms)
+  signtimeout: 120000

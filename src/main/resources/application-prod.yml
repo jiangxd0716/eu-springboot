@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.8.104:3306/frame?useUnicode=true&characterEncoding=utf8&createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      username: root
+      password: mingbyte@123
+  redis:
+    host: 192.168.8.104
+    password:
+    port: 6379
+    timeout: 5000
+
+#============================ minio 配置 ==========================================
+minio:
+  endpoint: http://192.168.8.32:9000
+  username: minioadmin
+  password: minioadmin
+  bucket-name: ysgeq
+  domain: http://192.168.8.32:9000
+
+#=========================== 日志配置 ===============================
+logging:
+  config: classpath:logback-boot.xml
