@@ -1,4 +1,4 @@
-package com.eu.frame.system.enums;
+package com.eu.frame.common.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.eu.frame.common.exception.GlobalException;

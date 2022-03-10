@@ -14,14 +14,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Slf4j
 @SpringBootApplication(scanBasePackages = "com.eu")
-@MapperScan(basePackages = "com.eu.frame.*.dao")
+@MapperScan(basePackages = "com.eu.system.*.dao")
 @ServletComponentScan
 @EnableTransactionManagement
 public class FrameApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FrameApplication.class, args);
-        log.info("============================ TEST * System startup completed ===================================================");
+        log.info("============================ Frame * System startup completed ===================================================");
     }
 
 }

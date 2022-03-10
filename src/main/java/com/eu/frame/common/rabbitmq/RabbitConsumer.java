@@ -1,13 +1,8 @@
 package com.eu.frame.common.rabbitmq;
 
-import com.eu.frame.common.utils.GsonUtil;
-import com.eu.frame.system.pojo.po.User;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.annotation.Exchange;
-import org.springframework.amqp.rabbit.annotation.Queue;
-import org.springframework.amqp.rabbit.annotation.QueueBinding;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
@@ -20,8 +15,8 @@ public class RabbitConsumer {
 
     @RabbitListener(queues = RabbitConfig.QUEUE_NAME)
     public void receive(String msg, Message message, Channel channel) {
-        User user = GsonUtil.getObject(msg, User.class);
-        System.out.println(user);
+//        User user = GsonUtil.getObject(msg, User.class);
+//        System.out.println(user);
 
         long deliveryTag = message.getMessageProperties().getDeliveryTag();
         try {

@@ -1,12 +1,12 @@
 package com.eu.frame.system.service;
 
 import cn.hutool.core.util.RandomUtil;
+import com.eu.frame.common.enums.MessageType;
 import com.eu.frame.common.wrapper.GlobalResponseWrapper;
 import com.eu.frame.common.exception.GlobalExceptionCode;
 import com.eu.frame.common.redis.JedisClient;
 import com.eu.frame.common.constants.RedisKey;
 import com.eu.frame.common.utils.AliyunUtil;
-import com.eu.frame.system.enums.MessageType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

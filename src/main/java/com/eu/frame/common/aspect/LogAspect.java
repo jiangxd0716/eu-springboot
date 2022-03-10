@@ -16,7 +16,7 @@ public class LogAspect {
     /**
      * 以 controller 包下定义的所有请求为切入点
      */
-    @Pointcut("execution(public * com.eu.frame.system.controller..*.*(..))")
+    @Pointcut("execution(public * com.eu.frame.server.*.controller..*.*(..))")
     public void webLog() {
     }
 
@@ -44,7 +44,6 @@ public class LogAspect {
      * 环绕
      *
      * @param proceedingJoinPoint
-     * @return
      * @throws Throwable
      */
     @Around("webLog()")
@@ -81,7 +80,6 @@ public class LogAspect {
      * 打印请求参数
      *
      * @param joinPoint
-     * @return
      */
     public String printRequestArgs(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs(); // 参数值

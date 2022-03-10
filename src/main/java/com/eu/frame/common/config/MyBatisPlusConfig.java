@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.autoconfigure.MybatisPlusPropertiesCustomizer;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.eu.frame.common.handle.FieldFillHandler;
 import com.eu.frame.common.utils.SnowFlake;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,7 +50,10 @@ public class MyBatisPlusConfig {
      */
     @Bean
     public MybatisPlusPropertiesCustomizer plusPropertiesCustomizer() {
-        return plusProperties -> plusProperties.getGlobalConfig().setIdentifierGenerator(new SnowFlake());
+        return plusProperties -> plusProperties
+                .getGlobalConfig()
+                .setIdentifierGenerator(new SnowFlake())
+                .setMetaObjectHandler(new FieldFillHandler());
     }
 
 }

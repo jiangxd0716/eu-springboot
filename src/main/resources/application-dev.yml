@@ -36,4 +36,3 @@ minio:
   username: minioadmin
   password: minioadmin
   bucket-name: test
-

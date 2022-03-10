@@ -1,10 +1,10 @@
 package com.eu.frame.system.controller;
 
+import com.eu.frame.common.enums.MessageType;
 import com.eu.frame.common.exception.GlobalException;
 import com.eu.frame.common.exception.GlobalExceptionCode;
 import com.eu.frame.common.utils.RegexUtil;
 import com.eu.frame.common.wrapper.GlobalResponseWrapper;
-import com.eu.frame.system.enums.MessageType;
 import com.eu.frame.system.service.CaptchaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
