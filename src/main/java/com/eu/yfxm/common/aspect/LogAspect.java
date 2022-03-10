@@ -1,6 +1,6 @@
 package com.eu.frame.common.aspect;
 
-import com.eu.frame.common.thread.CurrentUser;
+import com.eu.yfxm.common.thread.CurrentUser;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -16,7 +16,7 @@ public class LogAspect {
     /**
      * 以 controller 包下定义的所有请求为切入点
      */
-    @Pointcut("execution(public * com.eu.frame.server.*.controller..*.*(..))")
+    @Pointcut("execution(public * com.eu.frame.system.controller..*.*(..))")
     public void webLog() {
     }
 
