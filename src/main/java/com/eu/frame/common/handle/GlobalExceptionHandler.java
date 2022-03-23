@@ -3,7 +3,6 @@ package com.eu.frame.common.handle;
 import com.eu.frame.common.exception.GlobalException;
 import com.eu.frame.common.exception.GlobalExceptionCode;
 import com.eu.frame.common.wrapper.GlobalResponseWrapper;
-import com.eu.frame.common.wrapper.NotWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -25,17 +24,6 @@ import javax.validation.ConstraintViolationException;
 public class GlobalExceptionHandler {
 
     /**
-     * 判断该接口的方法是否需要被进场拦截处理
-     *
-     * @param request
-     * @return
-     */
-    private boolean methodNotWrapper(HttpServletRequest request) {
-        HandlerMethod handlerMethod = (HandlerMethod) request.getAttribute("org.springframework.web.servlet.HandlerMapping.bestMatchingHandler");
-        return handlerMethod.hasMethodAnnotation(NotWrapper.class);
-    }
-
-    /**
      * 自定义异常处理
      *
      * @param request
@@ -46,9 +34,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(GlobalException.class)
     @ResponseBody
     public GlobalResponseWrapper customExceptionHandler(HttpServletRequest request, GlobalException exception) {
-        if (this.methodNotWrapper(request)) {
-            throw exception;
-        }
         log.warn("CUSTOM EXCEPTION:[{}:{}]", exception.getCode().getCode(), exception.getMessage());
         return new GlobalResponseWrapper(exception.getCode()).msg(exception.getMessage());
     }
@@ -65,9 +50,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
     public GlobalResponseWrapper methodArgumentNotValidExceptionHandler(HttpServletRequest request, MethodArgumentNotValidException exception) throws Exception {
-        if (this.methodNotWrapper(request)) {
-            throw exception;
-        }
         //获取全部异常
         BindingResult bindingResult = exception.getBindingResult();
         //获取第一条异常进行返回
@@ -88,9 +70,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseBody
     public GlobalResponseWrapper constraintViolationExceptionHandler(HttpServletRequest request, ConstraintViolationException exception) {
-        if (this.methodNotWrapper(request)) {
-            throw exception;
-        }
         String message = exception.getConstraintViolations().iterator().next().getMessage();
         log.warn("REQUEST PARAM EXCEPTION:[{}]", message);
         return new GlobalResponseWrapper(GlobalExceptionCode.REQUEST_ARGUMENT_EXCEPTION).msg(message);

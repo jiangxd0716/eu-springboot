@@ -3,7 +3,6 @@ package com.eu.frame.common.handle;
 import com.eu.frame.common.constants.Constants;
 import com.eu.frame.common.exception.GlobalExceptionCode;
 import com.eu.frame.common.wrapper.GlobalResponseWrapper;
-import com.eu.frame.common.wrapper.NotWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -29,11 +28,6 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
      */
     @Override
     public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
-
-        if (methodParameter.hasMethodAnnotation(NotWrapper.class)) {
-            return Boolean.FALSE;
-        }
-
         /*
          接口允许直接返回 GlobalResponseWrapper，此处将不再进行额外处理
          */

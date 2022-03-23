@@ -3,32 +3,16 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/frame?useUnicode=true&characterEncoding=utf8&createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      url: jdbc:mysql://192.168.1.123:3306/frame?useUnicode=true&characterEncoding=utf8&createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
       username: root
-      password: 12345678
+      password: Xiupai@1234
 
   redis:
-    host: localhost
+    host: 192.168.1.123
     password:
     port: 6379
     timeout: 5000
     database: 0
-
-  rabbitmq:
-    host: 192.168.1.57
-    port: 5672
-    username: frame
-    password: frame
-    #    virtual-host: /
-    publisher-confirm-type: correlated #支持发布确认
-    publisher-returns: true  #支持发布返回
-    listener:
-      simple:
-        acknowledge-mode: manual #采用手动应答
-        concurrency: 1 #指定最小的消费者数量
-        max-concurrency: 10 #指定最大的消费者数量
-        retry:
-          enabled: true #是否支持重试
 
 #============================ minio 配置 ==========================================
 minio:

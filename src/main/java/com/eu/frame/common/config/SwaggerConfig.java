@@ -30,9 +30,6 @@ import java.util.List;
 @EnableSwagger2
 public class SwaggerConfig implements WebMvcConfigurer {
 
-    @Value("${spring.application.name}")
-    private String appName;
-
     @Value("${spring.profiles.active}")
     private String profile;
 
@@ -64,10 +61,8 @@ public class SwaggerConfig implements WebMvcConfigurer {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title(this.appName)
                 .contact(new Contact("J", "", "admin@admin"))
                 .version("1.0.0")
-                .description(this.appName)
                 .build();
     }
 

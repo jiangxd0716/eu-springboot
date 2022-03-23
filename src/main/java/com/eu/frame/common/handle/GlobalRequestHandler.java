@@ -10,7 +10,6 @@ import com.eu.frame.common.thread.CurrentUser;
 import com.eu.frame.common.utils.GsonUtil;
 import com.eu.frame.common.utils.JWTUtil;
 import com.eu.frame.common.utils.SignUtil;
-import com.eu.frame.common.wrapper.Authority;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.ExpiredObjectListener;
 import org.redisson.api.RSetCache;
@@ -108,21 +107,6 @@ public class GlobalRequestHandler implements HandlerInterceptor {
         if (StrUtil.isNotBlank(jwtToken)) {
             JWTUtil.JWT jwt = JWTUtil.INSTANCE.check(jwtToken, this.jwtSign);
             if (jwt.getStatus() == JWTUtil.JWT.NORMAL) {     //TOKEN 解析正常
-
-                // 配置文件开启接口授权
-                if (isAuthority) {
-                    // 判断类方法是否有权限注解，如果没有则跳过授权
-                    Authority annotation = null;
-                    if (handler instanceof HandlerMethod) {
-                        annotation = ((HandlerMethod) handler).getMethodAnnotation(Authority.class);
-                    }
-
-                    // 类方法有权限注解，需要判断用户是否有该权限
-                    if (null != annotation && !this.authority(annotation.mark(), jwt)) {
-                        response.setStatus(HttpStatus.UNAUTHORIZED.value());
-                        return Boolean.FALSE;
-                    }
-                }
 
                 // 请求签名校验
                 if (sign) {

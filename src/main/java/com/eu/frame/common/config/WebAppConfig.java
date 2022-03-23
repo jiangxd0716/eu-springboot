@@ -18,23 +18,26 @@ public class WebAppConfig extends WebMvcConfigurationSupport {
 
     private final GlobalRequestHandler globalRequestHandler;
 
-
     public WebAppConfig(GlobalRequestHandler globalRequestHandler) {
         this.globalRequestHandler = globalRequestHandler;
     }
 
-    /**
-     * 注册拦截器
-     *
-     * @param registry
-     */
-    @Override
-    protected void addInterceptors(InterceptorRegistry registry) {
-        registry
-                .addInterceptor(this.globalRequestHandler)
-                .addPathPatterns("/**")
-                .excludePathPatterns("/login", "/register", "/upload", "/captcha", "/actuator/**");
-    }
+//    /**
+//     * 注册拦截器
+//     *
+//     * @param registry
+//     */
+//    @Override
+//    protected void addInterceptors(InterceptorRegistry registry) {
+//        registry
+//                .addInterceptor(this.globalRequestHandler)
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/login",
+//                        "/register",
+//                        "/upload",
+//                        "/captcha",
+//                        "/actuator/**");
+//    }
 
     /**
      * 配置允许跨域访问
