@@ -1,4 +1,4 @@
-package com.eu.frame;
+package com.eu;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
@@ -17,11 +17,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan(basePackages = "com.eu.system.*.dao")
 @ServletComponentScan
 @EnableTransactionManagement
-public class FrameApplication {
+public class EuApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FrameApplication.class, args);
-        log.info("============================ Frame * System startup completed ===================================================");
+        SpringApplication.run(EuApplication.class, args);
+        log.info("============================ Eu * System startup completed ===================================================");
     }
 
 }
