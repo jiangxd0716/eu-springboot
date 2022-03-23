@@ -1,6 +1,6 @@
 package com.eu.frame.common.aspect;
 
-import com.eu.yfxm.common.thread.CurrentUser;
+import com.eu.frame.common.thread.CurrentUser;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
